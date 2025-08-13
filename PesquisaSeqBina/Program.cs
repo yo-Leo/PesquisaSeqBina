@@ -15,6 +15,8 @@ class Program
         Random r = new Random();
         int num = 0;
 
+        Stopwatch stopwatch = new Stopwatch();
+
         int[] vetor25 = Enumerable.Range(1, 25)
                                   .OrderBy(x => r.Next())
                                   .ToArray();
@@ -22,6 +24,8 @@ class Program
         int[] vetor250 = Enumerable.Range(1, 250)
                                    .OrderBy(x => r.Next())
                                    .ToArray();
+
+        stopwatch.Start();
 
         Console.WriteLine("Escolha o vetor de 25 ou 250 posições");
         Console.WriteLine("[1] - 25 posições");
@@ -120,6 +124,12 @@ class Program
 
                 break;
         }
+
+        stopwatch.Stop();
+        TimeSpan elapsed = stopwatch.Elapsed;
+
+        Console.WriteLine($"\nMilissegundos: {elapsed.TotalMilliseconds} ms");
+        Console.WriteLine($"Segundos: {elapsed.TotalSeconds} s");
 
     }
 
